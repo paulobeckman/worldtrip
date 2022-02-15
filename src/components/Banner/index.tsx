@@ -1,31 +1,52 @@
-import { Box, Flex, Image, Spacer, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
 
 export default function Banner() {
   return (
     <Flex
       w="100%"
+      h={["10.188rem", "15.625rem", "15.625rem", "20.938rem"]}
+      bgImage="url('/banner.svg')"
       maxWidth={1440}
-      justify="center"
-      paddingY="1.688rem"
-      paddingX="1rem"
-      alignItems="center"
+      bgPosition={["100% 20%","100% 20%","100% 30%"]}
+      bgRepeat="no-repeat"
+      bgSize="cover"
     >
-      <Image position="absolute" w="100%" src='/banner.svg' alt="banner"/>
-      <Box position="relative">
-        <Text
-          fontSize="2.25rem"
-          fontWeight="600"
-          color="gray.50"
-          mb="0.5rem"
-        >
-          5 Continentes,<br/>infinitas possibilidades.
-        </Text>
-        <Text fontSize="1.25rem" fontWeight="400" color="gray.100" mb="4">Chegou a hora de tirar do papel a viagem que você sempre sonhou.</Text>
-      </Box>
-      <Spacer />
-      <Box position="relative">
-        <Image src='/airplane.svg' alt="airplane"/>
-      </Box>
+      <Flex
+        w="100%"
+        mx="auto"
+        align="center"
+        justify={['center', 'space-between']}
+        px={["4","10","15","20","36"]}
+      >
+        <Box>
+          <Text
+            fontSize={["xl", "2xl", "2xl", "2xl", "4xl"]}
+            fontWeight="500"
+            color="gray.50"
+          >
+            5 Continentes,<br/>infinitas possibilidades.
+          </Text>
+          <Text
+            fontSize={["0.8rem","xl"]}
+            mt="4"
+            color="gray.100"
+            maxW={["100%", "100%", "100%", "34.375rem"]}
+          >
+              Chegou a hora de tirar do papel a viagem que você sempre sonhou.
+          </Text>
+        </Box>
+        <Box>
+          <Image
+            src='/airplane.svg'
+            alt="airplane"
+            w={["18.75rem","18.75rem","18.75rem","26.875rem"]}
+            display={['none','none',
+            'block']}
+            transform="translateY(3rem)"
+            ml="8"
+          />
+        </Box>
+      </Flex>
     </Flex>
   );
 };
