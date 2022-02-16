@@ -1,17 +1,15 @@
-import { GetStaticProps } from "next";
 import Link from 'next/link';
 import { Flex, Heading, Text } from '@chakra-ui/react';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { getPrismicClient } from "../../services/prismic";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
-interface SlidesProps {
+type SlidesProps = {
   continents:{
     slug: string;
     title: string;
-    summary: string;
+    caption: string;
     image: string;
   }[]
 }
@@ -40,7 +38,6 @@ export default function Slides({continents}: SlidesProps) {
                 <Flex
                   w="100%"
                   h="100%"
-                  direction="column"
                   align="center"
                   justify="center"
                   textAlign="center"
@@ -64,7 +61,7 @@ export default function Slides({continents}: SlidesProps) {
                         fontSize={["0.8rem","1xl", "2xl"]}
                         mt={["2","4"]}
                       >
-                        {continent.summary}
+                        {continent.caption}
                       </Text>
                     </a>
                   </Link>
@@ -76,26 +73,3 @@ export default function Slides({continents}: SlidesProps) {
     </Flex>
   )
 }
-
-// export const getStaticProps: GetStaticProps = async () => {
-//   const prismic = getPrismicClient();
-
-//   const response = await prismic.query(
-//     [Prismic.Predicates.at('document.type', 'continent')]
-//   )
-
-//   const continents = response.results.map(continent => {
-//     return {
-//       slug: continent.uid,
-//       title: continent.data.title,
-//       summary: continent.data.summary,
-//       image: continent.data.slider_image.url
-//     }
-//   })
-
-//   return {
-//     props: {
-//       continents
-//     }
-//   }
-// }
