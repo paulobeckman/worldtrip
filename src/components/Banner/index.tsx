@@ -7,6 +7,7 @@ export default function Banner() {
       h={["10.188rem", "15.625rem", "15.625rem", "20.938rem"]}
       bgImage="url('/banner.svg')"
       maxWidth={1440}
+      mx="auto"
       bgPosition={["100% 20%","100% 20%","100% 30%"]}
       bgRepeat="no-repeat"
       bgSize="cover"

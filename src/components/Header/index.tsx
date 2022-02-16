@@ -8,6 +8,7 @@ export default function Header() {
       maxWidth={1440}
       justify="center"
       paddingY="1.688rem"
+      mx="auto"
     >
       <Image src='/logo.svg' alt="logo"/>
     </Flex>

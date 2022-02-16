@@ -33,7 +33,6 @@ export default function Home({ continents }: HomeProps) {
       <Divider />
       <CallText />
       <Slides continents={continents} />
-
     </Box>
   )
 }
