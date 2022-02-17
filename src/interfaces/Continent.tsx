@@ -3,16 +3,15 @@ export interface ContinentProps {
     slug: string;
     title: string;
     description: string;
-    banner_image: string;
+    imageUrl: string;
     countries: number;
     languages: number;
     cities: number;
-    cities_list: string;
-    cities100: {
+    citiesList: {
       city: string;
       country: string;
-      thumbnail: string;
-      flag: string;
+      imageUrl: string;
+      conuntryFlag: string;
     }[]
   }
 }

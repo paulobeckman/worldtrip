@@ -1,22 +1,15 @@
 import { Flex } from "@chakra-ui/react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import { RichText } from 'prismic-dom';
-// import Cities from "../../components/Cities";
-// import Content from "../../components/Content";
-import ContinentBanner from "../../components/ContinentBanner";
+import Prismic from '@prismicio/client';
 import Header from "../../components/Header";
 import { getPrismicClient } from "../../services/prismic";
-import Prismic from '@prismicio/client';
-import { useRouter } from "next/dist/client/router";
-import { ContinentProps } from "../../interfaces/ContinentProps";
+import ContinentBanner from "../../components/ContinentBanner";
+import { ContinentProps } from "../../interfaces/Continent";
+import Description from "../../components/Description";
+import Cities from "../../components/Cities";
 
-export default function Continent({continent}: ContinentProps) {
-  const router = useRouter();
-  // if (router.isFallback) {
-  //   return <Loading />
-  // }
-
+export default function Continent({continent}: ContinentProps) {  
   return (
     <Flex direction="column">
       <Head>
@@ -26,9 +19,16 @@ export default function Continent({continent}: ContinentProps) {
       <Header />
       <ContinentBanner continent={continent} />
 
-      <Flex direction="column" maxW="1160px" mx="auto" mb="10" px="1rem">
-        {/* <Content continent={continent} />
-        <Cities continent={continent} /> */}
+
+      <Flex
+        direction="column"
+        maxW="1160px"
+        px="1rem"
+        mx="auto"
+        mb="10"
+      >
+        <Description continent={continent} />
+        <Cities continent={continent} />
       </Flex>
     </Flex>
   )
@@ -65,13 +65,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
     };
   }
 
-  console.log(JSON.stringify(response, null, 2))
-
   const continent = {
     slug:response.uid,
     title: response.data.title[0].text,
     description: response.data.description[0].text,
-    imageurl: response.data.imageurl.url,
+    imageUrl: response.data.imageurl.url,
     countries: response.data.numbercountries,
     languages: response.data.numberlanguages,
     cities: response.data.cities,
@@ -79,8 +77,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
       return {
         city: city.name[0].text,
         country: city.country[0].text,
-        thumbnail: city.imageurl1.url,
-        conuntryURL:city.conuntryurl[0].text,
+        imageUrl: city.imageurl1.url,
+        conuntryFlag:city.conuntryurl.url
       }
     })
   };
@@ -89,6 +87,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       continent
     },
-    revalidate: 1800,
+    revalidate: 1300,
   }
 }
