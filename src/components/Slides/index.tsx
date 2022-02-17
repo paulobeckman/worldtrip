@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { Flex, Heading, Text } from '@chakra-ui/react';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+import 'swiper/css';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 type SlidesProps = {

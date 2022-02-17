@@ -1,4 +1,4 @@
-import { Flex, Grid, GridItem, Icon, Image, Box } from "@chakra-ui/react";
+import { Flex, Grid, Icon, Image, Box } from "@chakra-ui/react";
 import Link from 'next/link';
 import { useRouter } from "next/dist/client/router";
 import { RiArrowLeftSLine } from 'react-icons/ri';
@@ -9,34 +9,44 @@ export default function Header() {
 
   return(
     <Flex
-      as="header"
-      w="100%"
+      as="header" 
+      w="100%" 
       maxWidth={1440}
-      justify="center"
-      paddingY="1.688rem"
+      h={["50px","100px"]}
+      py="27"
       mx="auto"
+      justifyContent="flex-start"
+      alignItems="center"
+      px="20"
     >
-      <Grid
-        templateColumns="40% 1fr"
-        maxW="71.25rem"
-        alignItems="center"
-        justifyContent="center"
-        alignSelf="start"
-        h="100%"
-        w="100%"
-        mx="auto"
-      >
-        {notHomePage && (
-          <Box w="5%">
-            <Link href="/">
-              <a>
-                <Icon as={RiArrowLeftSLine} fontSize={[20,40]}/>
-              </a>
-            </Link>
-          </Box>
-
-        )}
-        <Image src='/logo.svg' alt="logo"/>
+      {notHomePage && (
+        <Link href="/">
+          <a>
+            <Icon
+              as={RiArrowLeftSLine}
+              fontSize={[20, 40]}
+              justifySelf="start"
+            />
+          </a>
+        </Link>
+      )}
+        <Grid
+          h={["20px","46px"]}
+          mx="auto"
+          w="100%"
+          maxW="1160px"
+          alignItems="center"
+          justifyContent="center"
+        >
+        <Box>
+          <Image
+            src="/logo.svg"
+            alt="worldtrip"
+            w={["81px", "184px"]}
+            justifySelf="center"
+           gridColumn="2"
+          />
+        </Box>
       </Grid>
     </Flex>
   );

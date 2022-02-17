@@ -21,7 +21,6 @@ interface HomeProps {
 }
 
 export default function Home({ continents }: HomeProps) {
-  console.log(continents)
   return (
     <Box>
       <Head>
